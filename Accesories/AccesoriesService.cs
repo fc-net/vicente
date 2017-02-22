@@ -11,11 +11,5 @@ namespace Beesion.Recruitment.SeniorTest.Accesories
         {
             return AccesoriesRepository.GetAll();
         }
-
-        [BusinessOperation]
-        public Accesory GetById(int accesoryId)
-        {
-            return AccesoriesRepository.GetById(accesoryId);
-        }
     }
 }

@@ -11,11 +11,5 @@ namespace Beesion.Recruitment.SeniorTest.Devices
         {
             return DevicesRepository.GetAll();
         }
-
-        [BusinessOperation]
-        public Device GetBySku(string sku)
-        {
-            return DevicesRepository.GetBySku(sku);
-        }
     }
 }

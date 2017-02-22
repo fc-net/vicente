@@ -19,9 +19,9 @@ namespace Beesion.Recruitment.SeniorTest.Accesories
             return items;
         }
 
-        public static Accesory GetById(int accesoryId)
+        public static Accesory GetByPartNumber(string partNumber)
         {
-            return items.FirstOrDefault(s => s.AccesoryId == accesoryId);
+            return items.FirstOrDefault(s => string.Compare(partNumber, s.PartNumber) == 0);
         }
     }
 }

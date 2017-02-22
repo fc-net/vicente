@@ -79,7 +79,20 @@
                         width: 200,
                         handler:
                             function () {
-                                Ext.Msg.alert('Message', 'Not implemented');
+                                port.clearContainerPanel();
+                                var warehouseGrid = new WarehouseGrid();
+                                containerPanel.add(warehouseGrid);
+                                containerPanel.doLayout();
+                                BeesionRequest.ExecuteRecuest({
+                                    maskElement: containerPanel,
+                                    serviceName: 'WarehouseService',
+                                    operationName: 'GetAll',
+                                    parameters: [],
+                                    response:
+                                        function (result) {
+                                            warehouseGrid.Load(result);
+                                        }
+                                });
                             }
                     })
                 ]

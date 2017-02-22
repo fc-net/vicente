@@ -20,6 +20,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -940,6 +945,7 @@
     <Content Include="scripts\BeesionRequest.js" />
     <Content Include="scripts\DevicesGrid.js" />
     <Content Include="scripts\Start.js" />
+    <Content Include="scripts\WarehouseGrid.js" />
     <Content Include="styles\Default.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -970,6 +976,7 @@
     <Compile Include="StockManagement\StockService.cs" />
     <Compile Include="Warehouses\Warehouse.cs" />
     <Compile Include="Warehouses\WarehouseRepository.cs" />
+    <Compile Include="Warehouses\WarehouseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DefaultHandler.ashx" />

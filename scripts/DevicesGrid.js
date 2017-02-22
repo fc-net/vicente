@@ -16,7 +16,8 @@
                         { header: 'Brand', dataIndex: 'Brand' },
                         { header: 'Model', dataIndex: 'Model' },
                         { header: 'Description', dataIndex: 'Description', width: 380 },
-                        { header: 'Image', dataIndex: 'Sku', width: 120,
+                        {
+                            header: 'Image', dataIndex: 'Sku', width: 120,
                             renderer:
                                 function (value) { return '<img src="images/' + value + '.jpg" />'; }
                         }
@@ -26,8 +27,9 @@
                 title: 'Devices',
                 layout: 'fit',
                 autoHeight: true,
-                enableColumnHide : false
+                enableColumnHide: false
             });
+
             grid.on({
                 celldblclick:
                     function (scope, rowIndex, columnIndex, e) {
@@ -39,12 +41,15 @@
                             parameters: ['DEV', grid.getStore().getAt(rowIndex).data.Sku],
                             response:
                                 function (result) {
-                                    Ext.Msg.alert('Status',
-                                    'Total Count: ' + result.TotalQuantity + '</br>' +
-                                    'Min Count: ' + result.MinStock + '</br>' +
-                                    'Max Count: ' + result.MaxStock + '</br>' +
-                                    'Average: ' + result.AverageStock + '</br>'
-                                    );
+                                    if (parseInt(result.TotalQuantity) > 0)
+                                        Ext.Msg.alert('Status',
+                                        'Total Count: ' + result.TotalQuantity + '</br>' +
+                                        'Min Count: ' + result.MinStock + '</br>' +
+                                        'Max Count: ' + result.MaxStock + '</br>' +
+                                        'Average: ' + parseFloat(result.AverageStock).toFixed(2) + '</br>'
+                                        );
+                                    else
+                                        Ext.Msg.alert('Status', result.Message);
                                 }
                         });
                     }
@@ -60,4 +65,4 @@
             DevicesGrid.superclass.constructor.call(this, config);
         }
 });
-Ext.reg('DevicesGrid', AccesoriesGrid);
+Ext.reg('DevicesGrid', DevicesGrid);

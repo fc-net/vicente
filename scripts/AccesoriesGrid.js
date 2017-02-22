@@ -16,7 +16,8 @@
                         { header: 'Brand', dataIndex: 'Brand' },
                         { header: 'ParNumber', dataIndex: 'PartNumber' },
                         { header: 'Description', dataIndex: 'Description', width: 380 },
-                        { header: 'Image', dataIndex: 'PartNumber', width: 120,
+                        {
+                            header: 'Image', dataIndex: 'PartNumber', width: 120,
                             renderer:
                                 function (value) { return '<img src="images/' + value + '.gif" />'; }
                         }
@@ -32,20 +33,23 @@
             grid.on({
                 celldblclick:
                     function (scope, rowIndex, columnIndex, e) {
-                        
+
                         BeesionRequest.ExecuteRecuest({
                             maskElement: grid,
                             serviceName: 'StockService',
                             operationName: 'GetStockReport',
-                            parameters: ['DEV',grid.getStore().getAt(rowIndex).data.PartNumber],
+                            parameters: ['ACC', grid.getStore().getAt(rowIndex).data.PartNumber],
                             response:
                                 function (result) {
-                                    Ext.Msg.alert('Status',
-                                    'Total Count: ' + result.TotalQuantity + '</br>' +
-                                    'Min Count: ' + result.MinStock + '</br>' +
-                                    'Max Count: ' + result.MaxStock + '</br>' +
-                                    'Average: ' + result.AverageStock + '</br>' 
-                                    );
+                                    if (parseInt(result.TotalQuantity) > 0)
+                                        Ext.Msg.alert('Status',
+                                        'Total Count: ' + result.TotalQuantity + '</br>' +
+                                        'Min Count: ' + result.MinStock + '</br>' +
+                                        'Max Count: ' + result.MaxStock + '</br>' +
+                                        'Average: ' + parseFloat(result.AverageStock).toFixed(2) + '</br>'
+                                        );
+                                    else
+                                        Ext.Msg.alert('Status', result.Message);
                                 }
                         });
                     }

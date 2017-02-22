@@ -1,5 +1,8 @@
 ﻿using Beesion.Recruitment.SeniorTest.Services;
 using Beesion.Recruitment.SeniorTest.Warehouses;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Beesion.Recruitment.SeniorTest.StockManagement
 {
@@ -9,24 +12,37 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
         [BusinessOperation]
         public StockReport GetStockReport(string productType, string productId)
         {
-            var result = new StockReport();
             int locations = 0;
+            List<int> stocks = new List<int>();
             foreach (var warehouse in WarehouseRepository.GetAll())
             {
+                locations++;
                 foreach (var stockCount in warehouse.StockCounts)
                 {
-                    if(string.Compare(productType,stockCount.ProductType)==0 && string.Compare(productId, stockCount.ProductId)==0)
+                    if (string.Compare(productType, stockCount.ProductType) == 0 && string.Compare(productId, stockCount.ProductId) == 0)
                     {
-                        locations++;
-                        if (result.MinStock > stockCount.Quantity)
-                            result.MinStock = stockCount.Quantity;
-                        if (result.MaxStock < stockCount.Quantity)
-                            result.MaxStock = stockCount.Quantity;
-                        result.TotalQuantity++;
+                        stocks.Add(stockCount.Quantity);
                     }
                 }
             }
-            result.AverageStock = result.TotalQuantity/(decimal)locations;
+
+            return FillStockReport(stocks, locations);
+        }
+
+        private StockReport FillStockReport(List<int> stocks, int locations)
+        {
+            var result = new StockReport();
+
+            if (stocks.Count > 0)
+            {
+                result.MinStock = stocks.Count > 1 ? stocks.Min() : 0;
+                result.MaxStock = stocks.Max();
+                result.TotalQuantity = stocks.Sum();
+                result.AverageStock = result.TotalQuantity / (decimal)locations;
+            }
+            else
+                result.Message = "No tiene stock";
+
             return result;
         }
     }
@@ -38,5 +54,6 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
         public int MinStock { get; set; }
         public int MaxStock { get; set; }
         public decimal AverageStock { get; set; }
+        public string Message { get; set; }
     }
 }
