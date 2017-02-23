@@ -20,33 +20,29 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
         [BusinessOperation]
         public StockReportDto GetStockReport(string productType, string productId)
         {
-            int locations = 0;
             List<int> stocks = new List<int>();
             foreach (var warehouse in _warehouse.GetAll())
             {
-                locations++;
-                foreach (var stockCount in warehouse.StockCounts)
-                {
-                    if (string.Compare(productType, stockCount.ProductType) == 0 && string.Compare(productId, stockCount.ProductId) == 0)
-                    {
-                        stocks.Add(stockCount.Quantity);
-                    }
-                }
+                var quantity = warehouse.StockCounts.FirstOrDefault(i => i.ProductType == productType && i.ProductId == productId);
+                if (quantity != null)
+                    stocks.Add(quantity.Quantity);
+                else
+                    stocks.Add(0);
             }
 
-            return FillStockReport(stocks, locations);
+            return FillStockReport(stocks);
         }
 
-        private StockReportDto FillStockReport(List<int> stocks, int locations)
+        private StockReportDto FillStockReport(List<int> stocks)
         {
             var result = new StockReportDto();
 
-            if (stocks.Count > 0)
+            if (stocks.Distinct().Count() > 1)
             {
-                result.MinStock = stocks.Count > 1 ? stocks.Min() : 0;
+                result.MinStock = stocks.Min();
                 result.MaxStock = stocks.Max();
                 result.TotalQuantity = stocks.Sum();
-                result.AverageStock = result.TotalQuantity / (decimal)locations;
+                result.AverageStock = result.TotalQuantity / stocks.Count();
             }
             else
                 result.Message = "No tiene stock";
