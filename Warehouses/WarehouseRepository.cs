@@ -53,14 +53,11 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
                 x.StockCounts
                     .ForEach(i =>
                     {
-                        if (accesory.GetByPartNumber(i.ProductId) == null)
-                        {
+                        var existAccesory = accesory.GetByPartNumber(i.ProductId);
+                        if (existAccesory == null)
                             i.Product = device.GetBySku(i.ProductId);
-                        }
                         else
-                        {
-                            i.Product = accesory.GetByPartNumber(i.ProductId);
-                        }
+                            i.Product = existAccesory;
                     }));
             return items;
         }
