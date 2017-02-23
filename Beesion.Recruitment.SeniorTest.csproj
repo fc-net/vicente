@@ -983,6 +983,7 @@
     <Compile Include="ServiceDefinition\OperationDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDispatcher.cs" />
+    <Compile Include="StockManagement\StockReportDto.cs" />
     <Compile Include="StockManagement\StockEntry.cs" />
     <Compile Include="StockManagement\StockService.cs" />
     <Compile Include="Warehouses\IWarehouse.cs" />

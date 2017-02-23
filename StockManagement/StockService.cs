@@ -18,7 +18,7 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
         }
 
         [BusinessOperation]
-        public StockReport GetStockReport(string productType, string productId)
+        public StockReportDto GetStockReport(string productType, string productId)
         {
             int locations = 0;
             List<int> stocks = new List<int>();
@@ -37,9 +37,9 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
             return FillStockReport(stocks, locations);
         }
 
-        private StockReport FillStockReport(List<int> stocks, int locations)
+        private StockReportDto FillStockReport(List<int> stocks, int locations)
         {
-            var result = new StockReport();
+            var result = new StockReportDto();
 
             if (stocks.Count > 0)
             {
@@ -53,15 +53,5 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
 
             return result;
         }
-    }
-
-
-    public class StockReport
-    {
-        public int TotalQuantity { get; set; }
-        public int MinStock { get; set; }
-        public int MaxStock { get; set; }
-        public decimal AverageStock { get; set; }
-        public string Message { get; set; }
-    }
+    }    
 }
