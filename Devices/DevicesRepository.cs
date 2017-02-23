@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Beesion.Recruitment.SeniorTest.DevicesSpecifications;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Beesion.Recruitment.SeniorTest.Devices

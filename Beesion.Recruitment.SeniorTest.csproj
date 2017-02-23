@@ -971,6 +971,7 @@
     <Compile Include="DefaultHandler.ashx.cs">
       <DependentUpon>DefaultHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="DevicesSpecifications\DeviceSpecification.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\DeviceDto.cs" />
     <Compile Include="Devices\DevicesRepository.cs" />
