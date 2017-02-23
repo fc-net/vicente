@@ -1,21 +1,36 @@
 ﻿using Beesion.Recruitment.SeniorTest.Accesories;
-using Beesion.Recruitment.SeniorTest.Common;
 using Beesion.Recruitment.SeniorTest.Devices;
 using Beesion.Recruitment.SeniorTest.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
     [BusinessService]
     public class WarehouseService
     {
+        public readonly IWarehouse _warehouse;
+        public readonly IDevice _device;
+        public readonly IAccesory _accesory;
+        public WarehouseService(IWarehouse warehouse, IDevice device, IAccesory accesory)
+        {
+            if (warehouse == null)
+                throw new ArgumentNullException();
+            _warehouse = warehouse;
+
+            if (device == null)
+                throw new ArgumentNullException();
+            _device = device;
+
+            if (accesory == null)
+                throw new ArgumentNullException();
+            _accesory = accesory;
+        }
+
         [BusinessOperation]
         public IList<WarehouseDto> GetAll()
         {
-            var warehouses = WarehouseRepository.GetAll();
+            var warehouses = _warehouse.GetAll(_device, _accesory);
             return GetWarehouseDto(warehouses);
         }
 
@@ -43,16 +58,6 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
             }
 
             return result;
-        }
-
-        public class WarehouseDto : IProduct
-        {
-            public string Name { get; set; }
-            public string Brand { get; set; }
-            public string Description { get; set; }
-            public string ProductType { get; set; }
-            public string ProductId { get; set; }
-            public int Quantity { get; set; }
         }
     }
 }

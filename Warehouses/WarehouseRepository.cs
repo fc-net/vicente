@@ -6,7 +6,7 @@ using Beesion.Recruitment.SeniorTest.Accesories;
 
 namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
-    public class WarehouseRepository
+    public class WarehouseRepository : IWarehouse
     {
         private static readonly IList<Warehouse> items = new List<Warehouse>
         {
@@ -42,24 +42,24 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
             },
         };
 
-        //public static IList<Warehouse> GetAll()
-        //{
-        //    return items;
-        //}
+        public IList<Warehouse> GetAll()
+        {
+            return items;
+        }
 
-        public static IList<Warehouse> GetAll()
+        public IList<Warehouse> GetAll(IDevice device, IAccesory accesory)
         {
             items.ToList().ForEach(x =>
                 x.StockCounts
                     .ForEach(i =>
                     {
-                        if (AccesoriesRepository.GetByPartNumber(i.ProductId) == null)
+                        if (accesory.GetByPartNumber(i.ProductId) == null)
                         {
-                            i.Product = DevicesRepository.GetBySku(i.ProductId);
+                            i.Product = device.GetBySku(i.ProductId);
                         }
                         else
                         {
-                            i.Product = AccesoriesRepository.GetByPartNumber(i.ProductId);
+                            i.Product = accesory.GetByPartNumber(i.ProductId);
                         }
                     }));
             return items;

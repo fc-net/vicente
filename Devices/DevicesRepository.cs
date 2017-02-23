@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Beesion.Recruitment.SeniorTest.Devices
 {
-    public class DevicesRepository
+    public class DevicesRepository : IDevice
     {
         private static readonly List<Device> items = new List<Device>
         {
@@ -54,12 +54,12 @@ namespace Beesion.Recruitment.SeniorTest.Devices
             },
         };
 
-        public static IList<Device> GetAll()
+        public IList<Device> GetAll()
         {
             return items;
         }
 
-        public static Device GetBySku(string sku)
+        public Device GetBySku(string sku)
         {
             return items.FirstOrDefault(s => string.Compare(sku, s.Sku) == 0);
         }

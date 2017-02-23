@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Script.Serialization;
 using Beesion.Recruitment.SeniorTest.Services;
+using Autofac;
+using Beesion.Recruitment.SeniorTest.Warehouses;
 
 namespace Beesion.Recruitment.SeniorTest
 {
@@ -35,6 +37,6 @@ namespace Beesion.Recruitment.SeniorTest
             {
                 throw new Exception(string.Format("Error executing {0}.{1}",serviceName, operationName),ex);
             }
-        }
+        }        
     }
 }

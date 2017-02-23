@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Beesion.Recruitment.SeniorTest.Accesories
 {
-    public class AccesoriesRepository
+    public class AccesoriesRepository : IAccesory
     {
         private static readonly List<Accesory> items = new List<Accesory>()
         {
@@ -14,12 +14,12 @@ namespace Beesion.Recruitment.SeniorTest.Accesories
             new Accesory{AccesoryId = 1,Brand = "Apple", Description = "Black Silicone Skin Case For Apple iPhone 3G, iPhone 3G S",PartNumber = "CASE-IPHO3SKBCKS"}
         };
 
-        public static IList<Accesory> GetAll()
+        public IList<Accesory> GetAll()
         {
             return items;
         }
 
-        public static Accesory GetByPartNumber(string partNumber)
+        public Accesory GetByPartNumber(string partNumber)
         {
             return items.FirstOrDefault(s => string.Compare(partNumber, s.PartNumber) == 0);
         }

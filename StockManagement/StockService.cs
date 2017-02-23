@@ -9,12 +9,20 @@ namespace Beesion.Recruitment.SeniorTest.StockManagement
     [BusinessService]
     public class StockService
     {
+        public readonly IWarehouse _warehouse;
+        public StockService(IWarehouse warehouse)
+        {
+            if (warehouse == null)
+                throw new ArgumentNullException();
+            _warehouse = warehouse;
+        }
+
         [BusinessOperation]
         public StockReport GetStockReport(string productType, string productId)
         {
             int locations = 0;
             List<int> stocks = new List<int>();
-            foreach (var warehouse in WarehouseRepository.GetAll())
+            foreach (var warehouse in _warehouse.GetAll())
             {
                 locations++;
                 foreach (var stockCount in warehouse.StockCounts)
