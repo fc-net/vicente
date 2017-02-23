@@ -6,7 +6,7 @@ namespace Beesion.Recruitment.SeniorTest.Devices
 {
     public class DevicesRepository : IDevice
     {
-        private static readonly List<Device> items = new List<Device>
+        private readonly List<Device> items = new List<Device>
         {
             new Device{
                 Brand="Nokia",Model="Lumia 822 - Black",Sku="79032468236482",

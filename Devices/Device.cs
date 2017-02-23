@@ -13,8 +13,13 @@ namespace Beesion.Recruitment.SeniorTest.Devices
         public virtual ICollection<DeviceSpecification> Specifications { get; set; }
         public string Description
         {
-            get { return Specifications.Select(f => f.Feature).Aggregate((current, next) => current + ", " + next); }
+            get { return GetDescription(); }
             set { Description = value; }
+        }
+
+        private string GetDescription()
+        {
+            return Specifications.Select(f => f.Feature).Aggregate((current, next) => current + ", " + next);
         }
     }
 }

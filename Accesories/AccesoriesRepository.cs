@@ -5,7 +5,7 @@ namespace Beesion.Recruitment.SeniorTest.Accesories
 {
     public class AccesoriesRepository : IAccesory
     {
-        private static readonly List<Accesory> items = new List<Accesory>()
+        private readonly List<Accesory> items = new List<Accesory>()
         {
             new Accesory{AccesoryId = 1,Brand = "HTC", Description = "HD2 Car charger DROID Incredible",PartNumber = "CCHA-HTCINC2"},
             new Accesory{AccesoryId = 1,Brand = "HTC", Description = "Retractable charger DROID Incredible",PartNumber = "RCHA-HTCINC2"},

@@ -8,7 +8,7 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
     public class WarehouseRepository : IWarehouse
     {
-        private static readonly IList<Warehouse> items = new List<Warehouse>
+        private readonly IList<Warehouse> items = new List<Warehouse>
         {
             new Warehouse{Name="Denver",StockCounts = new List<StockEntry>
                 {
