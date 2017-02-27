@@ -1,15 +1,12 @@
-﻿using Beesion.Recruitment.SeniorTest.Accesories;
-using Beesion.Recruitment.SeniorTest.Devices;
-using System;
+﻿using Beesion.Recruitment.SeniorTest.Devices;
+using Bession.Recruitment.Application.Accesories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
     public interface IWarehouse
     {
         IList<Warehouse> GetAll();
-        IList<Warehouse> GetAll(IDevice device, IAccesory accesory);
+        IList<Warehouse> GetAll(IDevice device, IAccesoryService accesory);
     }
 }

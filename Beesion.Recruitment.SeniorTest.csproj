@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Beesion.Recruitment.SeniorTest</RootNamespace>
     <AssemblyName>Beesion.Recruitment.SeniorTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -36,6 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,9 +59,9 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -962,11 +963,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accesories\AccesoriesRepository.cs" />
-    <Compile Include="Accesories\AccesoriesService.cs" />
-    <Compile Include="Accesories\Accesory.cs" />
-    <Compile Include="Accesories\AccesoryDto.cs" />
-    <Compile Include="Accesories\IAccesory.cs" />
     <Compile Include="Common\IProduct.cs" />
     <Compile Include="DefaultHandler.ashx.cs">
       <DependentUpon>DefaultHandler.ashx</DependentUpon>
@@ -1024,6 +1020,32 @@
   <ItemGroup>
     <Folder Include="extjs\resources\images\vista\dd\" />
     <Folder Include="extjs\resources\images\vista\tree\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Bession.Recruitment.Application.Core\Bession.Recruitment.Application.Core.csproj">
+      <Project>{4d7ee7b3-2f91-454b-bbca-692806cc1df5}</Project>
+      <Name>Bession.Recruitment.Application.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Bession.Recruitment.Application\Bession.Recruitment.Application.csproj">
+      <Project>{a16b84cf-d417-40d8-a821-d6ab6c693b5b}</Project>
+      <Name>Bession.Recruitment.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="Bession.Recruitment.Data\Bession.Recruitment.Data.csproj">
+      <Project>{4777efd7-f62c-46ea-a82a-3102b106a582}</Project>
+      <Name>Bession.Recruitment.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="Bession.Recruitment.Domain.Core\Bession.Recruitment.Domain.Core.csproj">
+      <Project>{3cfe8655-12b0-4da8-b4e3-9f67c93d95c2}</Project>
+      <Name>Bession.Recruitment.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Bession.Recruitment.Domain.Entities\Bession.Recruitment.Domain.Entities.csproj">
+      <Project>{aa02a4f5-4a79-4787-b647-9379d5737aa2}</Project>
+      <Name>Bession.Recruitment.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="Bession.Recruitment.Domain\Bession.Recruitment.Domain.csproj">
+      <Project>{28394cae-5788-437a-8012-e7fd635431b9}</Project>
+      <Name>Bession.Recruitment.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

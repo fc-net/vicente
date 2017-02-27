@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using Beesion.Recruitment.SeniorTest.Services;
 using System;
+using Beesion.Recruitment.Application;
+using Bession.Recruitment.Application;
 
 namespace Beesion.Recruitment.SeniorTest.Devices
 {
     [BusinessService]
     public class DevicesService
     {
-        public readonly IDevice _device;
+        private readonly IDevice _device;
         public DevicesService(IDevice device)
         {
             if (device == null)

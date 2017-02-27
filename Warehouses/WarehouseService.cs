@@ -1,6 +1,8 @@
-﻿using Beesion.Recruitment.SeniorTest.Accesories;
+﻿using Beesion.Recruitment.Application;
 using Beesion.Recruitment.SeniorTest.Devices;
 using Beesion.Recruitment.SeniorTest.Services;
+using Bession.Recruitment.Application;
+using Bession.Recruitment.Application.Accesories;
 using System;
 using System.Collections.Generic;
 
@@ -9,10 +11,10 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
     [BusinessService]
     public class WarehouseService
     {
-        public readonly IWarehouse _warehouse;
-        public readonly IDevice _device;
-        public readonly IAccesory _accesory;
-        public WarehouseService(IWarehouse warehouse, IDevice device, IAccesory accesory)
+        private readonly IWarehouse _warehouse;
+        private readonly IDevice _device;
+        private readonly IAccesoryService _accesory;
+        public WarehouseService(IWarehouse warehouse, IDevice device, IAccesoryService accesory)
         {
             if (warehouse == null)
                 throw new ArgumentNullException();

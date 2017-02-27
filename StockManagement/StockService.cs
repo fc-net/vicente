@@ -3,13 +3,15 @@ using Beesion.Recruitment.SeniorTest.Warehouses;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Beesion.Recruitment.Application;
+using Bession.Recruitment.Application;
 
 namespace Beesion.Recruitment.SeniorTest.StockManagement
 {
     [BusinessService]
     public class StockService
     {
-        public readonly IWarehouse _warehouse;
+        private readonly IWarehouse _warehouse;
         public StockService(IWarehouse warehouse)
         {
             if (warehouse == null)

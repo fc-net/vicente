@@ -1,8 +1,6 @@
-﻿using Beesion.Recruitment.SeniorTest.Common;
-
-namespace Beesion.Recruitment.SeniorTest.Accesories
+﻿namespace Bession.Recruitment.Domain.Entities.Accesory
 {
-    public class Accesory : IProduct
+    public class Accesory
     {
         public int AccesoryId { get; set; }
         public string Brand { get; set; }

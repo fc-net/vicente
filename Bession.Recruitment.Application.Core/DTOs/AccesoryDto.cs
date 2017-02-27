@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Beesion.Recruitment.SeniorTest.Accesories
+namespace Bession.Recruitment.Application.Core.DTOs
 {
     public class AccesoryDto
     {

@@ -2,7 +2,7 @@
 using Beesion.Recruitment.SeniorTest.StockManagement;
 using System.Linq;
 using Beesion.Recruitment.SeniorTest.Devices;
-using Beesion.Recruitment.SeniorTest.Accesories;
+using Bession.Recruitment.Application.Accesories;
 
 namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
@@ -47,17 +47,17 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
             return items;
         }
 
-        public IList<Warehouse> GetAll(IDevice device, IAccesory accesory)
+        public IList<Warehouse> GetAll(IDevice device, IAccesoryService accesory)
         {
             items.ToList().ForEach(x =>
                 x.StockCounts
                     .ForEach(i =>
                     {
-                        var existAccesory = accesory.GetByPartNumber(i.ProductId);
-                        if (existAccesory == null)
+                        //var existAccesory = accesory.GetByPartNumber(i.ProductId);
+                        //if (existAccesory == null)
                             i.Product = device.GetBySku(i.ProductId);
-                        else
-                            i.Product = existAccesory;
+                        //else
+                            //i.Product = existAccesory;
                     }));
             return items;
         }

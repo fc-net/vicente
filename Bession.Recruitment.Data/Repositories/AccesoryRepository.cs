@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Entities.Accesory;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Beesion.Recruitment.SeniorTest.Accesories
+namespace Bession.Recruitment.Data.Repositories
 {
-    public class AccesoriesRepository : IAccesory
+    public class AccesoryRepository : RepositoryBase<Accesory>, IAccesoryRepository
     {
         private readonly List<Accesory> items = new List<Accesory>()
         {
@@ -14,14 +16,9 @@ namespace Beesion.Recruitment.SeniorTest.Accesories
             new Accesory{AccesoryId = 1,Brand = "Apple", Description = "Black Silicone Skin Case For Apple iPhone 3G, iPhone 3G S",PartNumber = "CASE-IPHO3SKBCKS"}
         };
 
-        public IList<Accesory> GetAll()
+        override public IQueryable<Accesory> GetAll()
         {
-            return items;
-        }
-
-        public Accesory GetByPartNumber(string partNumber)
-        {
-            return items.FirstOrDefault(s => string.Compare(partNumber, s.PartNumber) == 0);
+            return items.AsQueryable();
         }
     }
 }

@@ -39,7 +39,7 @@
                                 containerPanel.doLayout();
                                 BeesionRequest.ExecuteRecuest({
                                     maskElement: containerPanel,
-                                    serviceName: 'AccesoriesService',
+                                    serviceName: 'AccesoryService',
                                     operationName: 'GetAll',
                                     parameters: [],
                                     response:
