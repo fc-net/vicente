@@ -978,6 +978,7 @@
     <Compile Include="ServiceDefinition\OperationDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDispatcher.cs" />
+    <Compile Include="StockManagement\IStockService.cs" />
     <Compile Include="StockManagement\StockService.cs" />
     <Compile Include="Warehouses\IWarehouseService.cs" />
     <Compile Include="Warehouses\MapperWarehouse.cs" />

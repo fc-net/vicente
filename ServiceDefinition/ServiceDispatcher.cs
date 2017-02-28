@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Beesion.Recruitment.SeniorTest.Devices;
+using Beesion.Recruitment.SeniorTest.StockManagement;
 using Beesion.Recruitment.SeniorTest.Warehouses;
 using Bession.Recruitment.Application;
 using Bession.Recruitment.Application.Accesories;
@@ -87,6 +88,7 @@ namespace Beesion.Recruitment.SeniorTest.Services
             builder.RegisterType<DevicesRepository>().As<IDevicesRepository>();
             builder.RegisterType<DeviceLogic>().As<IDeviceLogic>();
             builder.RegisterType<StockLogic>().As<IStockLogic>();
+            builder.RegisterType<StockService>().As<IStockService>();
 
             // Build the container to finalize registrations
             // and prepare for object resolution.

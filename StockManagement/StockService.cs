@@ -7,7 +7,7 @@ using Bession.Recruitment.Application.Core.DTOs;
 namespace Beesion.Recruitment.SeniorTest.StockManagement
 {
     [BusinessService]
-    public class StockService
+    public class StockService : IStockService
     {
         private readonly IStockLogic _stockLogic;
         private readonly IWarehouseRepository _warehouseRespository;
