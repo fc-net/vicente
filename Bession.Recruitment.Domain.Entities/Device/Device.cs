@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Beesion.Recruitment.SeniorTest.Common;
+﻿using Bession.Recruitment.Domain.Entities.DevicesSpecifications;
+using System.Collections.Generic;
 using System.Linq;
-using Beesion.Recruitment.SeniorTest.DevicesSpecifications;
 
-namespace Beesion.Recruitment.SeniorTest.Devices
+namespace Bession.Recruitment.Domain.Entities.Device
 {
     public class Device : IProduct
     {

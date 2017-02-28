@@ -41,9 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accesories\AccesoryLogic.cs" />
+    <Compile Include="Devices\DeviceLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock\StockLogic.cs" />
+    <Compile Include="Warehouses\WarehouseLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bession.Recruitment.Application.Core\Bession.Recruitment.Application.Core.csproj">
+      <Project>{4D7EE7B3-2F91-454B-BBCA-692806CC1DF5}</Project>
+      <Name>Bession.Recruitment.Application.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bession.Recruitment.Domain.Core\Bession.Recruitment.Domain.Core.csproj">
       <Project>{3cfe8655-12b0-4da8-b4e3-9f67c93d95c2}</Project>
       <Name>Bession.Recruitment.Domain.Core</Name>
@@ -53,6 +60,7 @@
       <Name>Bession.Recruitment.Domain.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

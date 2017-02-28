@@ -1,4 +1,4 @@
-﻿namespace Beesion.Recruitment.SeniorTest.Devices
+﻿namespace Bession.Recruitment.Application.Core.DTOs
 {
     public class DeviceDto
     {

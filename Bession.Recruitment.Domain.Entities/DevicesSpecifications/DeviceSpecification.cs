@@ -1,4 +1,4 @@
-﻿namespace Beesion.Recruitment.SeniorTest.DevicesSpecifications
+﻿namespace Bession.Recruitment.Domain.Entities.DevicesSpecifications
 {
     public class DeviceSpecification
     {

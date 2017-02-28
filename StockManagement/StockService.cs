@@ -1,55 +1,34 @@
 ﻿using Beesion.Recruitment.SeniorTest.Services;
-using Beesion.Recruitment.SeniorTest.Warehouses;
-using System.Collections.Generic;
-using System.Linq;
 using System;
-using Beesion.Recruitment.Application;
-using Bession.Recruitment.Application;
+using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Core.Contracts;
+using Bession.Recruitment.Application.Core.DTOs;
 
 namespace Beesion.Recruitment.SeniorTest.StockManagement
 {
     [BusinessService]
     public class StockService
     {
-        private readonly IWarehouse _warehouse;
-        public StockService(IWarehouse warehouse)
+        private readonly IStockLogic _stockLogic;
+        private readonly IWarehouseRepository _warehouseRespository;
+        public StockService(IStockLogic stockLogic, IWarehouseRepository warehouseRespository)
         {
-            if (warehouse == null)
+            if (stockLogic == null)
                 throw new ArgumentNullException();
-            _warehouse = warehouse;
+            _stockLogic = stockLogic;
+
+            if (warehouseRespository == null)
+                throw new ArgumentNullException();
+            _warehouseRespository = warehouseRespository;
         }
 
         [BusinessOperation]
         public StockReportDto GetStockReport(string productType, string productId)
         {
-            List<int> stocks = new List<int>();
-            foreach (var warehouse in _warehouse.GetAll())
-            {
-                var quantity = warehouse.StockCounts.FirstOrDefault(i => i.ProductType == productType && i.ProductId == productId);
-                if (quantity != null)
-                    stocks.Add(quantity.Quantity);
-                else
-                    stocks.Add(0);
-            }
+            var warehouse = _warehouseRespository.GetAll();
+            var stock = _stockLogic.GetStockReport(warehouse, productType, productId);
 
-            return FillStockReport(stocks);
-        }
-
-        private StockReportDto FillStockReport(List<int> stocks)
-        {
-            var result = new StockReportDto();
-
-            if (stocks.Distinct().Count() > 1)
-            {
-                result.MinStock = stocks.Min();
-                result.MaxStock = stocks.Max();
-                result.TotalQuantity = stocks.Sum();
-                result.AverageStock = result.TotalQuantity / stocks.Count();
-            }
-            else
-                result.Message = "No tiene stock";
-
-            return result;
+            return stock;
         }
     }    
 }

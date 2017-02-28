@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Beesion.Recruitment.SeniorTest.StockManagement;
+﻿using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Entities.StockEntries;
+using Bession.Recruitment.Domain.Entities.Warehouse;
+using System.Collections.Generic;
 using System.Linq;
-using Beesion.Recruitment.SeniorTest.Devices;
-using Bession.Recruitment.Application.Accesories;
 
-namespace Beesion.Recruitment.SeniorTest.Warehouses
+namespace Bession.Recruitment.Data.Repositories
 {
-    public class WarehouseRepository : IWarehouse
+    public class WarehouseRepository : RepositoryBase<Warehouse>, IWarehouseRepository
     {
         private readonly IList<Warehouse> items = new List<Warehouse>
         {
@@ -42,24 +42,9 @@ namespace Beesion.Recruitment.SeniorTest.Warehouses
             },
         };
 
-        public IList<Warehouse> GetAll()
+        override public IQueryable<Warehouse> GetAll()
         {
-            return items;
-        }
-
-        public IList<Warehouse> GetAll(IDevice device, IAccesoryService accesory)
-        {
-            items.ToList().ForEach(x =>
-                x.StockCounts
-                    .ForEach(i =>
-                    {
-                        //var existAccesory = accesory.GetByPartNumber(i.ProductId);
-                        //if (existAccesory == null)
-                            i.Product = device.GetBySku(i.ProductId);
-                        //else
-                            //i.Product = existAccesory;
-                    }));
-            return items;
+            return items.AsQueryable();
         }
     }
 }

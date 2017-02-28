@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Beesion.Recruitment.Application;
 using Beesion.Recruitment.SeniorTest.Devices;
 using Beesion.Recruitment.SeniorTest.Warehouses;
 using Bession.Recruitment.Application;
@@ -8,6 +7,9 @@ using Bession.Recruitment.Data.Repositories;
 using Bession.Recruitment.Domain.Accesories;
 using Bession.Recruitment.Domain.Core.Contracts;
 using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Devices;
+using Bession.Recruitment.Domain.Stock;
+using Bession.Recruitment.Domain.Warehouses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,11 +77,17 @@ namespace Beesion.Recruitment.SeniorTest.Services
             var builder = new ContainerBuilder();
 
             // Register types that expose interfaces...
-            builder.RegisterType<WarehouseRepository>().As<IWarehouse>();
-            builder.RegisterType<DevicesRepository>().As<IDevice>();
+            builder.RegisterType<WarehouseService>().As<IWarehouseService>();
+            builder.RegisterType<WarehouseRepository>().As<IWarehouseRepository>();
+            builder.RegisterType<WarehouseLogic>().As<IWarehouseLogic>();
             builder.RegisterType<AccesoryService>().As<IAccesoryService>();
             builder.RegisterType<AccesoryRepository>().As<IAccesoryRepository>();
             builder.RegisterType<AccesoryLogic>().As<IAccesoryLogic>();
+            builder.RegisterType<DevicesService>().As<IDevicesService>();
+            builder.RegisterType<DevicesRepository>().As<IDevicesRepository>();
+            builder.RegisterType<DeviceLogic>().As<IDeviceLogic>();
+            builder.RegisterType<StockLogic>().As<IStockLogic>();
+
             // Build the container to finalize registrations
             // and prepare for object resolution.
             Container = builder.Build();

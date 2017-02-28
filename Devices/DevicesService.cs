@@ -1,45 +1,28 @@
 ﻿using System.Collections.Generic;
 using Beesion.Recruitment.SeniorTest.Services;
 using System;
-using Beesion.Recruitment.Application;
-using Bession.Recruitment.Application;
+using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Application.Core.DTOs;
+using System.Linq;
 
 namespace Beesion.Recruitment.SeniorTest.Devices
 {
     [BusinessService]
-    public class DevicesService
+    public class DevicesService : IDevicesService
     {
-        private readonly IDevice _device;
-        public DevicesService(IDevice device)
+        private readonly IDevicesRepository _devicesRepository;
+        public DevicesService(IDevicesRepository devicesRepository)
         {
-            if (device == null)
+            if (devicesRepository == null)
                 throw new ArgumentNullException();
-            _device = device;
+            _devicesRepository = devicesRepository;
         }
 
         [BusinessOperation]
         public IList<DeviceDto> GetAll()
         {
-            var devices = _device.GetAll();
-            return GetDeviceDto(devices);
-        }
-
-        private IList<DeviceDto> GetDeviceDto(IList<Device> devices)
-        {
-            var result = new List<DeviceDto>();
-
-            foreach (var dev in devices)
-            {
-                result.Add(new DeviceDto
-                {
-                    Model = dev.Model,
-                    Brand = dev.Brand,
-                    Description = dev.Description,
-                    Sku = dev.Sku
-                });
-            }
-
-            return result;
+            var devices = _devicesRepository.GetAll().ToList();
+            return MapperDevices.GetDeviceDto(devices);
         }
     }
 }

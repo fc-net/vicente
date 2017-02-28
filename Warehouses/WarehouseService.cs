@@ -1,65 +1,36 @@
-﻿using Beesion.Recruitment.Application;
-using Beesion.Recruitment.SeniorTest.Devices;
-using Beesion.Recruitment.SeniorTest.Services;
-using Bession.Recruitment.Application;
-using Bession.Recruitment.Application.Accesories;
+﻿using Beesion.Recruitment.SeniorTest.Services;
 using System;
 using System.Collections.Generic;
+using Bession.Recruitment.Application.Core.DTOs;
+using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Core.Contracts;
 
 namespace Beesion.Recruitment.SeniorTest.Warehouses
 {
     [BusinessService]
-    public class WarehouseService
+    public class WarehouseService : IWarehouseService
     {
-        private readonly IWarehouse _warehouse;
-        private readonly IDevice _device;
-        private readonly IAccesoryService _accesory;
-        public WarehouseService(IWarehouse warehouse, IDevice device, IAccesoryService accesory)
+        private readonly IWarehouseRepository _warehouseRespository;
+        private readonly IWarehouseLogic _warehouseLogic;
+
+        public WarehouseService(IWarehouseRepository warehouseRespository, IWarehouseLogic warehouseLogic)
         {
-            if (warehouse == null)
+            if (warehouseRespository == null)
                 throw new ArgumentNullException();
-            _warehouse = warehouse;
+            _warehouseRespository = warehouseRespository;
 
-            if (device == null)
+            if (warehouseLogic == null)
                 throw new ArgumentNullException();
-            _device = device;
-
-            if (accesory == null)
-                throw new ArgumentNullException();
-            _accesory = accesory;
+            _warehouseLogic = warehouseLogic;
         }
 
         [BusinessOperation]
         public IList<WarehouseDto> GetAll()
         {
-            var warehouses = _warehouse.GetAll(_device, _accesory);
-            return GetWarehouseDto(warehouses);
-        }
+            var warehouses = _warehouseRespository.GetAll();
+            var warehouse = _warehouseLogic.GetAll(warehouses);
 
-        [BusinessOperation]
-        public IList<WarehouseDto> GetWarehouseDto(IList<Warehouse> warehouses)
-        {
-            var result = new List<WarehouseDto>();
-
-            var name = "";
-            foreach (var warehouse in warehouses)
-            {
-                name = warehouse.Name;
-                foreach (var stockCount in warehouse.StockCounts)
-                {
-                    result.Add(new WarehouseDto
-                    {
-                        Name = name,
-                        Brand = stockCount.Product.Brand,
-                        Description = stockCount.Product.Description,
-                        ProductType = stockCount.ProductType,
-                        ProductId = stockCount.ProductId,
-                        Quantity = stockCount.Quantity
-                    });
-                }
-            }
-
-            return result;
+            return MapperWarehouse.GetWarehouseDto(warehouse);
         }
     }
 }

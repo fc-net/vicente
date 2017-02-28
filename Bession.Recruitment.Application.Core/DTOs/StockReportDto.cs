@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Beesion.Recruitment.SeniorTest.StockManagement
+﻿namespace Bession.Recruitment.Application.Core.DTOs
 {
     public class StockReportDto
     {

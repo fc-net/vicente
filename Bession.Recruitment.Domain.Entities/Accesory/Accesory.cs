@@ -1,6 +1,6 @@
 ﻿namespace Bession.Recruitment.Domain.Entities.Accesory
 {
-    public class Accesory
+    public class Accesory : IProduct
     {
         public int AccesoryId { get; set; }
         public string Brand { get; set; }

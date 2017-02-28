@@ -1,6 +1,4 @@
-﻿using Beesion.Recruitment.SeniorTest.Common;
-
-namespace Beesion.Recruitment.SeniorTest.StockManagement
+﻿namespace Bession.Recruitment.Domain.Entities.StockEntries
 {
     public class StockEntry
     {

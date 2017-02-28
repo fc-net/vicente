@@ -41,12 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IAccesoryLogic.cs" />
+    <Compile Include="Contracts\IDeviceLogic.cs" />
+    <Compile Include="Contracts\IStockLogic.cs" />
+    <Compile Include="Contracts\IWarehouseLogic.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAccesoryRepository.cs" />
+    <Compile Include="Repositories\IDevicesRepository.cs" />
+    <Compile Include="Repositories\IWarehouseRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bession.Recruitment.Application.Core\Bession.Recruitment.Application.Core.csproj">
+      <Project>{4D7EE7B3-2F91-454B-BBCA-692806CC1DF5}</Project>
+      <Name>Bession.Recruitment.Application.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bession.Recruitment.Domain.Entities\Bession.Recruitment.Domain.Entities.csproj">
       <Project>{aa02a4f5-4a79-4787-b647-9379d5737aa2}</Project>
       <Name>Bession.Recruitment.Domain.Entities</Name>

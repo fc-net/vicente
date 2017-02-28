@@ -1,10 +1,12 @@
-﻿using Beesion.Recruitment.SeniorTest.DevicesSpecifications;
+﻿using Bession.Recruitment.Domain.Core.Repositories;
+using Bession.Recruitment.Domain.Entities.Device;
+using Bession.Recruitment.Domain.Entities.DevicesSpecifications;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Beesion.Recruitment.SeniorTest.Devices
+namespace Bession.Recruitment.Data.Repositories
 {
-    public class DevicesRepository : IDevice
+    public class DevicesRepository : RepositoryBase<Device>, IDevicesRepository
     {
         private readonly List<Device> items = new List<Device>
         {
@@ -55,14 +57,9 @@ namespace Beesion.Recruitment.SeniorTest.Devices
             },
         };
 
-        public IList<Device> GetAll()
+        override public IQueryable<Device> GetAll()
         {
-            return items;
-        }
-
-        public Device GetBySku(string sku)
-        {
-            return items.FirstOrDefault(s => string.Compare(sku, s.Sku) == 0);
+            return items.AsQueryable();
         }
     }
 }

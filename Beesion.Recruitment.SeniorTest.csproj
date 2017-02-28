@@ -963,29 +963,25 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accesories\AccesoryService.cs" />
+    <Compile Include="Accesories\IAccesoryService.cs" />
+    <Compile Include="Accesories\MapperAccesory.cs" />
     <Compile Include="Common\IProduct.cs" />
     <Compile Include="DefaultHandler.ashx.cs">
       <DependentUpon>DefaultHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="DevicesSpecifications\DeviceSpecification.cs" />
-    <Compile Include="Devices\Device.cs" />
-    <Compile Include="Devices\DeviceDto.cs" />
-    <Compile Include="Devices\DevicesRepository.cs" />
     <Compile Include="Devices\DevicesService.cs" />
-    <Compile Include="Devices\IDevice.cs" />
+    <Compile Include="Devices\IDevicesService.cs" />
+    <Compile Include="Devices\MapperDevices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceDefinition\BusinessOperationAttribute.cs" />
     <Compile Include="ServiceDefinition\BusinessServiceAttribute.cs" />
     <Compile Include="ServiceDefinition\OperationDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDescriptor.cs" />
     <Compile Include="ServiceDefinition\ServiceDispatcher.cs" />
-    <Compile Include="StockManagement\StockReportDto.cs" />
-    <Compile Include="StockManagement\StockEntry.cs" />
     <Compile Include="StockManagement\StockService.cs" />
-    <Compile Include="Warehouses\IWarehouse.cs" />
-    <Compile Include="Warehouses\Warehouse.cs" />
-    <Compile Include="Warehouses\WarehouseDto.cs" />
-    <Compile Include="Warehouses\WarehouseRepository.cs" />
+    <Compile Include="Warehouses\IWarehouseService.cs" />
+    <Compile Include="Warehouses\MapperWarehouse.cs" />
     <Compile Include="Warehouses\WarehouseService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1025,10 +1021,6 @@
     <ProjectReference Include="Bession.Recruitment.Application.Core\Bession.Recruitment.Application.Core.csproj">
       <Project>{4d7ee7b3-2f91-454b-bbca-692806cc1df5}</Project>
       <Name>Bession.Recruitment.Application.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="Bession.Recruitment.Application\Bession.Recruitment.Application.csproj">
-      <Project>{a16b84cf-d417-40d8-a821-d6ab6c693b5b}</Project>
-      <Name>Bession.Recruitment.Application</Name>
     </ProjectReference>
     <ProjectReference Include="Bession.Recruitment.Data\Bession.Recruitment.Data.csproj">
       <Project>{4777efd7-f62c-46ea-a82a-3102b106a582}</Project>

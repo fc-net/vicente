@@ -1,8 +1,6 @@
-﻿using Beesion.Recruitment.SeniorTest.Common;
-
-namespace Beesion.Recruitment.SeniorTest.Warehouses
+﻿namespace Bession.Recruitment.Application.Core.DTOs
 {
-    public class WarehouseDto : IProduct
+    public class WarehouseDto
     {
         public string Name { get; set; }
         public string Brand { get; set; }
