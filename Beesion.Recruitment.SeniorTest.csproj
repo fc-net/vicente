@@ -966,7 +966,6 @@
     <Compile Include="Accesories\AccesoryService.cs" />
     <Compile Include="Accesories\IAccesoryService.cs" />
     <Compile Include="Accesories\MapperAccesory.cs" />
-    <Compile Include="Common\IProduct.cs" />
     <Compile Include="DefaultHandler.ashx.cs">
       <DependentUpon>DefaultHandler.ashx</DependentUpon>
     </Compile>
